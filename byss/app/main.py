@@ -7,6 +7,8 @@ from app.models import User
 from flask import Flask,session,request,redirect
 from flask_restplus import Resource, Api
 
+import json
+
 app = Flask(__name__, instance_relative_config=True)
 
 def init_config():
@@ -70,18 +72,11 @@ init_app()
 
 api = Api(app, prefix="/v1", title="Users", description="Users CURD api.", doc="/doc")
 
-@api.route("/user")
-class User(Resource):
-    def get(self):
-        return {"user": 1}
-    def post(self):
-        return {"status": "OK"}
-
 @app.route('/')
 def hello_world():
     result = "{}"
-    # User.insert(account="liuxiaodong11")
-    # result = User.get_by()
-    print result
-    return result
+    User.insert(account="liuxiaodong")
+    result = User.get_by()
+    print json.dumps(result)
+    return json.dumps(result)
 
