@@ -11,7 +11,6 @@ from app.lib.database import db
 manager = Manager(app)
 
 is_sqlite = app.config.get('SQLALCHEMY_DATABASE_URI').startswith('sqlite:')
-print app.config.get('SQLALCHEMY_DATABASE_URI')
 migrate = Migrate(app, db, render_as_batch=is_sqlite)
 
 
