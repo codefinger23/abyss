@@ -61,16 +61,29 @@ def load_extensions_dynamic():
         if hasattr(_module, "extension"):
             _type = "register"
             getattr(_module.extension, "init_app")(app)
-        print "loading {0:10}: {1:35} =>    {2}".format("extensions", _module.__name__, _type)
+        print "loading  {0:11}: {1:35} =>    {2}".format("extensions", _module.__name__, _type)
 
-def init_app():
+def register_api():
+    init_view_list = []
+    for _, name, _ in pkgutil.iter_modules(views.__path__):
+        _view = __import__("{0}.{1}".format(views.__name__, name), fromlist=[""])
+        init_view_list.append(_view)
+    for _view in init_view_list:
+        if hasattr(_view, "ns"):
+            extensions.restplus.extension.add_namespace(_view.ns)
+            # api_blueprint = Blueprint("api", __name__, url_prefix="/api")
+            # app.register_blueprint(api_blueprint)
+            # getattr(_module.extension, "ns")
+        print "register {0:11}: {1:35} =>    mounted".format("views", _view.__name__)
+
+with app.app_context():
     init_config()
     init_before()
     init_error_handler()
     load_extensions_dynamic()
-init_app()
+    register_api()
 
-api = Api(app, prefix="/v1", title="Users", description="Users CURD api.", doc="/doc")
+# api = Api(app, title="abyss", description="abyss CURD api.", doc="/doc")
 
 @app.route('/')
 def hello_world():
