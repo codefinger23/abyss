@@ -71,9 +71,6 @@ def register_api():
     for _view in init_view_list:
         if hasattr(_view, "ns"):
             extensions.restplus.extension.add_namespace(_view.ns)
-            # api_blueprint = Blueprint("api", __name__, url_prefix="/api")
-            # app.register_blueprint(api_blueprint)
-            # getattr(_module.extension, "ns")
         print "register {0:11}: {1:35} =>    mounted".format("views", _view.__name__)
 
 with app.app_context():

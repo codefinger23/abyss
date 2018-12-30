@@ -8,8 +8,8 @@ ns = Namespace("users", description="Users CURD api.")
 @ns.route("")
 class UserAPI(Resource):
     def get(self):
-        User.get_by()
-        return {"user": 1}
+        result = User.get_by()
+        return result
 
     def post(self):
         return {"status": "OK"}
