@@ -80,13 +80,3 @@ with app.app_context():
     load_extensions_dynamic()
     register_api()
 
-# api = Api(app, title="abyss", description="abyss CURD api.", doc="/doc")
-
-@app.route('/')
-def hello_world():
-    result = "{}"
-    User.insert(account="liuxiaodong")
-    result = User.get_by()
-    print json.dumps(result)
-    return json.dumps(result)
-
