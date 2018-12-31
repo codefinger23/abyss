@@ -20,8 +20,5 @@ export default {
   margin-top: 60px; */
   height: 100%;
 }
-#app > .grid {
-    height: 100%;
-    background-color: #DADADA;
-}
+
 </style>

@@ -3,8 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import "./assets/semantic/semantic.css"
-
+import 'jquery'
+import "./assets/semantic/semantic.min.css"
+import "./assets/semantic/semantic.min.js"
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
