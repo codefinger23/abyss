@@ -4,15 +4,21 @@
     <h2 class="ui teal image header">
       <img src="@/assets/logo.png" class="image">
       <div class="content">
-        登录到账号
+        注册账号
       </div>
     </h2>
     <form class="ui large form">
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
-            <i class="user icon"></i>
+            <i class="mail icon"></i>
             <input type="text" name="email" placeholder="邮箱地址">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="nickname" placeholder="昵称">
           </div>
         </div>
         <div class="field">
@@ -21,7 +27,13 @@
             <input type="password" name="password" placeholder="密码">
           </div>
         </div>
-        <div class="ui fluid large teal submit button">登录</div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="barcode icon"></i>
+            <input type="password" name="password" placeholder="邀请码">
+          </div>
+        </div>
+        <div class="ui fluid large teal submit button">注册</div>
       </div>
 
       <div class="ui error message"></div>
@@ -29,7 +41,7 @@
     </form>
 
     <div class="ui message">
-      新用户？<router-link to="/signup">注册</router-link>
+      已有账户？ <router-link to="/signin">登录</router-link>
     </div>
   </div>
 </div>
