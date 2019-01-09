@@ -68,6 +68,18 @@ export default {
     bindsubmit() {
       console.log("Hello World!");
       console.log($('.ui.form').form("clear"));
+      let d = {
+        "account": "xx",
+        "password": "yy"
+      }
+      api.user.get(d).then(
+        function(response) {
+          console.log(response);
+        },
+        function(response) {
+
+        }
+      )
       return false
     },
     init() {
