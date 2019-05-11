@@ -1,8 +1,9 @@
 # encoding=utf-8
 from app.extensions.restplus import extension as api
-from app.lib.view_decorate import ViewDecorate
+from app.lib.error_define import *
 from app.models import User
 from flask_restplus import Resource, fields, Namespace, reqparse
+from flask import abort
 
 ns = Namespace("auth", description="auth about api.")
 
@@ -35,4 +36,5 @@ class AuthAPI(Resource):
         data = parser.parse_args()
         print "This is signup"
         print data
-        return {"status": "OK"}
+        abort(SupportError("邀请码过期"))
+        return res({"status": "OK"})

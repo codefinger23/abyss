@@ -33,6 +33,7 @@ def init_error_handler():
 
     @app.errorhandler(SupportError)
     def hanlde_support(error):
+        print "handler error"
         return res(code=204, msg=error.msg)
 
     @app.errorhandler(PermissionError)
