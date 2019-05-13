@@ -71,7 +71,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         to: config.dev.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    new webpack.ProvidePlugin({ 
+      $: "jquery", 
+      jQuery: "jquery", 
+      "windows.jQuery": "jquery" 
+    })
   ]
 })
 
